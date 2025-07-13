@@ -1,6 +1,6 @@
 # Flo Customer Dashboard (MERN Stack)
 
-This is a MERN Stack project for managing customer orders and interactions for Flo Sleep Solutions. Customers can log in, check orders, raise issues, and perform actions like checkout, cancellation, return, etc.
+This is a MERN Stack project for managing customer orders. Customers can log in, check orders, raise issues, and perform actions like checkout, cancellation, return, etc.
 
 ---
 
