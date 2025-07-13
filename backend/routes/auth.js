@@ -89,6 +89,18 @@ router.post('/cart', verifyToken, async (req, res) => {
   res.json({ msg: 'Added to cart', cart: user.cart });
 });
 
+// Remove from Cart
+router.delete('/cart/:productId', verifyToken, async (req, res) => {
+  const { productId } = req.params;
+  const user = await User.findById(req.userId);
+  if (!user) return res.status(404).json({ msg: 'User not found' });
+  const idx = user.cart.findIndex(item => String(item.productId) === String(productId));
+  if (idx === -1) return res.status(404).json({ msg: 'Product not in cart' });
+  user.cart.splice(idx, 1);
+  await user.save();
+  res.json({ msg: 'Removed from cart', cart: user.cart });
+});
+
 // Add to Wishlist
 router.post('/wishlist', verifyToken, async (req, res) => {
   const { productId, title, price, thumbnail } = req.body;
